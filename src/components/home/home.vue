@@ -1,12 +1,12 @@
 <template>
-    <containerLogin></containerLogin>
+    <h1>LALALALLLALALALALA</h1>
 </template>
 
 
 
 <script>
-import containerLogin from '../login/container_login'
+//import containerLogin from '../login/container_login'
 export default {
-    components : {containerLogin}
+    //components : {containerLogin}
 }
 </script>

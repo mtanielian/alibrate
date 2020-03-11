@@ -4,5 +4,8 @@ export const constants = Object.freeze({
     //WS - LOS QUE MAS RESEÑAN
     REST_ALIBRATE_TOP_REVIEWERS : "https://api.alibrate.com/v1/rankings/topReviewers",
     //WS - LOS QUE MAS LEEN
-    REST_ALIBRATE_TOP_READERS : "https://api.alibrate.com/v1/rankings/topReaders"
+    REST_ALIBRATE_TOP_READERS : "https://api.alibrate.com/v1/rankings/topReaders",
+    //WS - REST PASSWORD
+    REST_ALIBRATE_REST_PASSWORD : "https://api.alibrate.com/v1/user/reset/resetPasswordRequest"
+
 });

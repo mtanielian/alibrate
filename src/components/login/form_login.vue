@@ -71,8 +71,8 @@ export default {
         }
     },
     mounted () {
-        console.log(constants)
-
+        if (localStorage.token)
+            this.$router.push('home')         
     },
     methods : {
         login() {
@@ -90,10 +90,11 @@ export default {
                     qs.stringify({username : this.frmLogin.username, password : this.frmLogin.password}),
                     options
                 ).then((rs) => {
-                    console.log(rs)
-                    
+                   localStorage.token = rs.data.access_token;
+                   this.$router.push('home') 
                 }).catch((e) => {
-                    console.log(e)
+                    console.log(e.response.data.message)
+                    
                 })
 
             }
