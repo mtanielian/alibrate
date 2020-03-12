@@ -1,12 +1,15 @@
 <template>
-    <h1>LALALALLLALALALALA</h1>
+    <div>
+        <navBar></navBar>
+
+    </div>
 </template>
 
 
 
 <script>
-//import containerLogin from '../login/container_login'
+import navBar from '../nav/navbar'
 export default {
-    //components : {containerLogin}
+    components : {navBar}
 }
 </script>
