@@ -17,17 +17,31 @@
                         
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="#">Page</a>
+                                <li class="nav-item" style="margin-right:15px">
+                                    <a class="nav-link" href="#" data-toggle="tooltip" title="Actividad"><i class="fas fa-history fa-lg" style="color:white"></i></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Page</a>
+                                <li class="nav-item" style="margin-right:15px">
+                                    <a class="nav-link" href="#" data-toggle="tooltip" title="Mi Biblioteca"><i class="fas fa-address-book fa-lg" style="color:white"></i></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Page</a>
+                                <li class="nav-item" style="margin-right:15px">
+                                    <a class="nav-link" href="#" data-toggle="tooltip" title="eBooks"><i class="fas fa-book-open fa-lg" style="color:white"></i></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Page</a>
+                                <li class="nav-item" style="margin-right:15px">
+                                    <a class="nav-link" href="#"><i class="fas fa-user-friends fa-lg" style="color:white"></i></a>
+                                </li>
+                                <li class="nav-item" style="margin-right:15px">
+                                    <a class="nav-link" href="#" data-toggle="tooltip" title="Rankings"><i class="fas fa-arrows-alt-v fa-lg" style="color:white"></i></a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-user-cog fa-lg" style="color:white"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Editar Perfil</a>
+                                        <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Cerrar sesión</a>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -144,6 +158,8 @@ export default {
             jQuery('.collapse.in').toggleClass('in');
             jQuery('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
+
+        jQuery('[data-toggle="tooltip"]').tooltip()
     },
     methods : {
         getAge() {
@@ -184,6 +200,9 @@ export default {
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
+.dropdown-toggle::after{
+    display: none !important;
+}
 
 #sidebarCollapse {
     display: none;
