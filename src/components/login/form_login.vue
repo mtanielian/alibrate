@@ -71,7 +71,7 @@ export default {
         }
     },
     mounted () {
-        if (localStorage.token)
+        if (this.$store.state.token)
             this.$router.push('home')         
     },
     methods : {
@@ -90,15 +90,9 @@ export default {
                     qs.stringify({username : this.frmLogin.username, password : this.frmLogin.password}),
                     options
                 ).then((rs) => {
-                   //localStorage.token = rs.data.access_token;
                    
-
                     this.$store.dispatch('setToken', rs.data.access_token).then(() => {
-console.log("guardo")
-console.log(this.$store.state.token)
-console.log(this.$store.state.data_user)
-
-                       // this.$router.push('home') 
+                       this.$router.push('home') 
                     })
                 }).catch((e) => {
                     console.log(e.response.data.message)

@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 const jwtDecode = require('jwt-decode')
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
 const Store = new Vuex.Store({
+    plugins: [createPersistedState()],
     state : {
         token: false,
         data_user : ""

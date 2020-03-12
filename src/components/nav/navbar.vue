@@ -1,112 +1,158 @@
 <template>
-<div></div>
-<!--
-    <nav class="navbar navbar-default navbar-expand-lg navbar-light" style="margin-bottom:30px">
-        <div class="navbar-header d-flex col">
-            <a class="navbar-brand" href="#">Brand<b>Name</b></a>  		
-            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
-                <span class="navbar-toggler-icon"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+    <div>
+        <div class="wrapper">
+            <!-- Sidebar  -->
+         
+
+            <!-- Page Content  -->
+            <div id="content">
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+
+                        <button id="sidebarCollapse" class="btn btn-info" type="button">                       
+                            <i class="fas fa-align-justify" style="font-size: 1.4rem;"></i>
+                        </button>
+                        <img class="logoAlibrate" :src="alibrateIcon" alt="Logo Alibrate" style="width:7em;">
+                        
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+               <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                   
+                <div class="sidebar-header">
+                    
+
+
+<div class="col-12" style="
+    color: white;padding-bottom:10px
+"><img :src="this.user.userInfo.profile.picture" alt="Cinque Terre" width="60" height="60" class="rounded-circle mCS_img_loaded" style="
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: absolute;
+    "><h5 style="
+    margin: 0px;
+    margin-left: 70px;
+    width: 60%;
+    padding: 0px;
+    padding-top: 15px;
+">
+    {{this.user.userInfo.profile.displayName}} </h5><h5 style="
+    margin: 0px;
+    margin-left: 70px;
+    width: 60%;
+    padding: 0px;
+    padding-top: 5px;
+">{{this.getAge()}}
+    </h5></div>
+
+
+
+
+                </div>
+
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="#">Home 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li>
+                                <a href="#">Page 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+                    <li>
+                        <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                    </li>
+                    <li>
+                        <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        <div v-if="showLogin" id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-            <ul class="nav navbar-nav navbar-right ml-auto" style="line-height: 1.9; !important">		
-                <li class="nav-item" style="margin-right:30px">
-                    <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Login</a>
-                    <ul class="dropdown-menu form-wrapper">					
-                        <li>
-                            <div class="form-group">
-                                <input type="text" class="form-control" 
-                                    placeholder="Email" v-model="frmLogin.email"    
-                                />
-                            </div>
-                            <div class="form-group">
-                                <input 
-                                    type="password" class="form-control" 
-                                    placeholder="Password" v-model="frmLogin.pass"
-                                    v-on:keyup.enter="login"
-                                >
-                            </div>
-                            <input 
-                                type="button" class="btn btn-primary btn-block" 
-                                value="Login" v-on:click="login"
-                            />
-                            <div class="form-footer">
-                                <a href="#">Forgot Your password?</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Sign up</a>
-                    <ul class="dropdown-menu form-wrapper">					
-                        <li>
-                            <form action="/examples/actions/confirmation.php" method="post">
-                                <p class="hint-text">Fill in this form to create your account!</p>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Username" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Confirm Password" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
-                                </div>
-                                <input type="submit" class="btn btn-primary btn-block" value="Sign up">
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div v-else id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-            <ul class="nav navbar-nav navbar-right ml-auto" style="line-height: 1.9; !important">		
-                <li class="nav-item dropdown">
-                    <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">
-                        {{this.user.nombre}} {{this.user.apellido}} <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">					
-                        <li><a style="cursor:pointer;" v-on:click='cv' class="dropdown-item">Mi CV</a></li>
-                        <li><a style="cursor:pointer;" v-on:click='postulations' class="dropdown-item">Mis Postulaciones</a></li>
-                        <li><a style="cursor:pointer;" v-on:click='profile' class="dropdown-item">Mi Perfil</a></li>
-                        <li><a style="cursor:pointer;" v-on:click='logout' class="dropdown-item">Salir</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    -->
+        <div class="overlay"></div>
+    </div>
 </template>
 
 <script>
-/*
-import axios from 'axios'
-import qs from 'qs'
-import jwtDecode from 'jwt-decode'
+import alibrateIcon from '../../assets/images/AlibrateLogoWhite.svg'
+import moment from 'moment'
 
 export default {
     mounted() {
-        this.setSession();
+       jQuery("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        jQuery('#dismiss, .overlay').on('click', function () {
+            jQuery('#sidebar').removeClass('active');
+            jQuery('.overlay').removeClass('active');
+        });
+
+        jQuery('#sidebarCollapse').on('click', function () {
+            jQuery('#sidebar').addClass('active');
+            jQuery('.overlay').addClass('active');
+            jQuery('.collapse.in').toggleClass('in');
+            jQuery('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
     },
     methods : {
-        setSession() {
-            if (localStorage.token) {
-                let payload = jwtDecode(localStorage.token)
-               
-                this.user = payload.user
-                this.showLogin = false
-            } else {
-                this.showLogin = true
-            }
+        getAge() {
+            return moment().diff(moment(this.user.userInfo.profile.birthday, 'YYYYMMDD'), 'years') + " años "
+
         },
         logout() {
             localStorage.clear();
-            this.showLogin = true
+            //this.showLogin = true
 
         },
         postulations() {
@@ -122,245 +168,231 @@ export default {
     },
     data() {
         return {
-            showLogin : true,
-            user : {},
+            alibrateIcon,
+            showLogin : false,
+            user : this.$store.state.data_user,
             frmLogin : {
                 email : '',
                 pass : ''
             }
         }
     }
-}*/
+}
 </script>
 
-<style scoped>
-.form-control {
-    box-shadow: none;		
-    font-weight: normal;
-    font-size: 13px;
-}
-.form-control:focus {
-    border-color: #33cabb;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-.navbar-header.col {
-    padding: 0 !important;
-}	
-.navbar {
-    background: #fff;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-bottom: 1px solid #dfe3e8;
-    border-radius: 0;
-}
-.nav-link img {
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    margin: -8px 0;
-    float: left;
-    margin-right: 10px;
-}
-.navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
-    padding-left: 0;
-    font-size: 20px;
-    padding-right: 50px;
-}
-.navbar .navbar-brand b {
-    font-weight: bold;
-    color: #33cabb;		
-}
-.navbar .form-inline {
-    display: inline-block;
-}
-.navbar .nav li {
-    position: relative;
-}
-.navbar .nav li a {
-    color: #888;
-}
-.search-box {
-    position: relative;
-}	
-.search-box input {
-    padding-right: 35px;
-    border-color: #dfe3e8;
-    border-radius: 4px !important;
-    box-shadow: none
-}
-.search-box .input-group-addon {
-    min-width: 35px;
-    border: none;
-    background: transparent;
-    position: absolute;
-    right: 0;
-    z-index: 9;
-    padding: 7px;
-    height: 100%;
-}
-.search-box i {
-    color: #a0a5b1;
-    font-size: 19px;
-}
-.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
-    color: #fff;
-    background: #33cabb;
-    padding-top: 8px;
-    padding-bottom: 6px;
-    vertical-align: middle;
-    border: none;
-}	
-.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {		
-    color: #fff;
-    outline: none;
-    background: #31bfb1;
-}
-.navbar .navbar-right li:first-child a {
-    padding-right: 30px;
-}
-.navbar .nav-item i {
-    font-size: 18px;
-}
-.navbar .dropdown-item i {
-    font-size: 16px;
-    min-width: 22px;
-}
-.navbar ul.nav li.active a, .navbar ul.nav li.open > a {
-    background: transparent !important;
-}	
-.navbar .nav .get-started-btn {
-    min-width: 120px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
-.navbar ul.nav li.open > a.get-started-btn {
-    color: #fff;
-    background: #31bfb1 !important;
-}
-.navbar .dropdown-menu {
-    border-radius: 1px;
-    border-color: #e5e5e5;
-    box-shadow: 0 2px 8px rgba(0,0,0,.05);
-}
-.navbar .nav .dropdown-menu li {
-    color: #999;
-    font-weight: normal;
-}
-.navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
-    padding: 8px 20px;
-    line-height: normal;
-}
-.navbar .navbar-form {
-    border: none;
-}
-.navbar .dropdown-menu.form-wrapper {
-    width: 280px;
-    padding: 20px;
-    left: auto;
-    right: 0;
-    font-size: 14px;
-}
-.navbar .dropdown-menu.form-wrapper a {		
-    color: #33cabb;
-    padding: 0 !important;
-}
-.navbar .dropdown-menu.form-wrapper a:hover{
-    text-decoration: underline;
-}
-.navbar .form-wrapper .hint-text {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 13px;
-}
-.navbar .form-wrapper .social-btn .btn, .navbar .form-wrapper .social-btn .btn:hover {
-    color: #fff;
-    margin: 0;
-    padding: 0 !important;
-    font-size: 13px;
-    border: none;
-    transition: all 0.4s;
-    text-align: center;
-    line-height: 34px;
-    width: 47%;
-    text-decoration: none;
-}	
-.navbar .social-btn .btn-primary {
-    background: #507cc0;
-}
-.navbar .social-btn .btn-primary:hover {
-    background: #4676bd;
-}
-.navbar .social-btn .btn-info {
-    background: #64ccf1;
-}
-.navbar .social-btn .btn-info:hover {
-    background: #4ec7ef;
-}
-.navbar .social-btn .btn i {
-    margin-right: 5px;
-    font-size: 16px;
-    position: relative;
-    top: 2px;
-}
-.navbar .form-wrapper .form-footer {
-    text-align: center;
-    padding-top: 10px;
-    font-size: 13px;
-}
-.navbar .form-wrapper .form-footer a:hover{
-    text-decoration: underline;
-}
-.navbar .form-wrapper .checkbox-inline input {
-    margin-top: 3px;
-}
-.or-seperator {
-    margin-top: 32px;
-    text-align: center;
-    border-top: 1px solid #e0e0e0;
-}
-.or-seperator b {
-    color: #666;
-    padding: 0 8px;
-    width: 30px;
-    height: 30px;
-    font-size: 13px;
-    text-align: center;
-    line-height: 26px;
-    background: #fff;
-    display: inline-block;
-    border: 1px solid #e0e0e0;
-    border-radius: 50%;
-    position: relative;
-    top: -15px;
-    z-index: 1;
-}
-.navbar .checkbox-inline {
-    font-size: 13px;
-}
-.navbar .navbar-right .dropdown-toggle::after {
+<style>
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+#sidebarCollapse {
     display: none;
 }
-@media (min-width: 1200px){
-    .form-inline .input-group {
-        width: 300px;
-        margin-left: 30px;
+
+@media only screen and (max-width: 600px) {
+    .logoAlibrate {
+        display : none;
+    }
+
+    #sidebarCollapse {
+        display: inline;
+        
     }
 }
-@media (max-width: 768px){
-    .navbar .dropdown-menu.form-wrapper {
-        width: 100%;
-        padding: 10px 15px;
-        background: transparent;
-        border: none;
-    }
-    .navbar .form-inline {
-        display: block;
-    }
-    .navbar .input-group {
-        width: 100%;
-    }
-    .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
-        display: block;
-    }
+
+.fa-align-justify {
+  color: white;
+  width: 20px;
+}
+
+.btn-info {
+    background-color: #1c4865;
+    border-color: #1c4865;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background-color: #1c4865 !important;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+#sidebar {
+    width: 325px;
+    position: fixed;
+    top: 0;
+    left: -325px;
+    height: 100vh;
+    z-index: 999;
+    background: white;
+    color: #2c3e50;
+    transition: all 0.3s;
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    text-align: left !important;
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: #7386D5;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    z-index: 9999;
+}
+
+#dismiss:hover {
+    background: #fff;
+    color: #7386D5;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+#sidebar .sidebar-header {
+    background: #2c3e50 !important;
+}
+
+#sidebar ul.components {
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+/*
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+*/
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 </style>
