@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../components/login/container_login'
 import Home from '../components/home/home'
+import Rankings from '../components/rankings/container'
 
 import jwtDecode from 'jwt-decode'
 import store from '../store'
@@ -22,7 +23,17 @@ const routes = [
     meta : {
       requiresAuth : true
     }
-
+  },
+  {
+    path : "/rankings",
+    component : Rankings,
+    meta : {
+      requiresAuth : true
+    }
+  },
+  {
+    path : "*",
+    redirect : "/"
   }
 ]
 

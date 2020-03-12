@@ -30,17 +30,22 @@
                                     <a class="nav-link" href="#"><i class="fas fa-user-friends fa-lg" style="color:white"></i></a>
                                 </li>
                                 <li class="nav-item" style="margin-right:15px">
+                                    <router-link to="rankings" class="nav-link" data-toggle="tooltip" title="Rankings"> 
+                                        <i class="fas fa-arrows-alt-v fa-lg" style="color:white"></i>
+                                    </router-link>
+                                    <!--
                                     <a class="nav-link" href="#" data-toggle="tooltip" title="Rankings"><i class="fas fa-arrows-alt-v fa-lg" style="color:white"></i></a>
+                                    -->
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-user-cog fa-lg" style="color:white"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Editar Perfil</a>
-                                        <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+                                        <a class="dropdown-item" style="cursor:pointer">Editar Perfil</a>
+                                        <a class="dropdown-item" style="cursor:pointer">Cambiar Contraseña</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Cerrar sesión</a>
+                                        <a class="dropdown-item" style="cursor:pointer" v-on:click="logout">Cerrar sesión</a>
                                     </div>
                                 </li>
                             </ul>
@@ -167,8 +172,9 @@ export default {
 
         },
         logout() {
-            localStorage.clear();
-            //this.showLogin = true
+             this.$store.dispatch('logoutUser').then(() => {
+                this.$router.push('/') 
+            })
 
         },
         postulations() {

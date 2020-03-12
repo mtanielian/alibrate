@@ -6,7 +6,7 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 const Store = new Vuex.Store({
-    plugins: [createPersistedState()],
+    plugins: [createPersistedState({storage: window.sessionStorage})],
     state : {
         token: false,
         data_user : ""
@@ -17,8 +17,9 @@ const Store = new Vuex.Store({
             state.token = token
             state.data_user = jwtDecode(token)
         },
-        clearUser(state) {
-            state.token = false
+        logout(state) {
+            state.token = false,
+            state.data_user = ""
         }
     },
     
@@ -26,8 +27,8 @@ const Store = new Vuex.Store({
         setToken({ commit }, token) {
             commit('setToken', token);
         },
-        clearUser({ commit }) {
-            commit('clearUser');
+        logoutUser({ commit }) {
+            commit('logout');
         }
     },
     
