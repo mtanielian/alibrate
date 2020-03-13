@@ -54,39 +54,24 @@
                <nav id="sidebar">
                 <div id="dismiss">
                     <i class="fas fa-arrow-left"></i>
-                </div>
-                   
+                </div>                   
                 <div class="sidebar-header">
-                    
-
-
-<div class="col-12" style="
-    color: white;padding-bottom:10px
-"><img :src="this.user.userInfo.profile.picture" alt="Cinque Terre" width="60" height="60" class="rounded-circle mCS_img_loaded" style="
-    margin-top: 10px;
-    margin-bottom: 10px;
-    position: absolute;
-    "><h5 style="
-    margin: 0px;
-    margin-left: 70px;
-    width: 60%;
-    padding: 0px;
-    padding-top: 15px;
-">
-    {{this.user.userInfo.profile.displayName}} </h5><h5 style="
-    margin: 0px;
-    margin-left: 70px;
-    width: 60%;
-    padding: 0px;
-    padding-top: 5px;
-">{{this.getAge()}}
-    </h5></div>
-
-
-
-
+                    <div class="col-12" style="color: white;padding-bottom:10px">
+                        <img 
+                            :src="this.user.userInfo.profile.picture" 
+                            alt="Imagen usuario" 
+                            width="60" height="60" 
+                            class="rounded-circle mCS_img_loaded" 
+                            style="margin-top: 10px; margin-bottom: 10px; position: absolute;"
+                        >
+                        <h5 style="margin: 0px; margin-left: 70px; width: 60%; padding: 0px; padding-top: 15px;">
+                            {{this.user.userInfo.profile.displayName}}
+                        </h5>
+                        <h5 style="margin: 0px; margin-left: 70px; width: 60%; padding: 0px; padding-top: 5px;">
+                            {{this.getAge()}}
+                        </h5>
+                    </div>
                 </div>
-
                 <ul class="list-unstyled components">
                     <li>
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
