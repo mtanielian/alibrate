@@ -32,10 +32,7 @@
                                 <li class="nav-item" style="margin-right:15px">
                                     <router-link to="rankings" class="nav-link" data-toggle="tooltip" title="Rankings"> 
                                         <i class="fas fa-arrows-alt-v fa-lg" style="color:white"></i>
-                                    </router-link>
-                                    <!--
-                                    <a class="nav-link" href="#" data-toggle="tooltip" title="Rankings"><i class="fas fa-arrows-alt-v fa-lg" style="color:white"></i></a>
-                                    -->
+                                    </router-link>                                   
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -164,7 +161,8 @@ export default {
             jQuery('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
 
-        jQuery('[data-toggle="tooltip"]').tooltip()
+        
+            
     },
     methods : {
         getAge() {
@@ -414,9 +412,9 @@ a.article:hover {
 
 #content {
     width: 100%;
-    min-height: 100vh;
+    height: 70px;
     transition: all 0.3s;
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
     right: 0;
 }

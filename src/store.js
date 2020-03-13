@@ -6,7 +6,7 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 const Store = new Vuex.Store({
-    plugins: [createPersistedState({storage: window.sessionStorage})],
+    plugins: [createPersistedState({storage: window.sessionStorage  })],
     state : {
         token: false,
         data_user : ""

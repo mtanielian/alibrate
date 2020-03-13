@@ -1,9 +1,22 @@
 <template>
   <div id="app">
-    
+    <navbar v-if="this.$store.state.token"></navbar>
     <router-view/>
   </div>
 </template>
+
+<script>
+import navbar from './components/nav/navbar'
+
+
+export default {
+  components : {navbar},
+  mounted() {
+    console.log(this.$store.state)
+  },
+
+}
+</script>
 
 <style>
 #app {
