@@ -1,5 +1,6 @@
 export const constants = Object.freeze({
-    ALIBREATE : {
+    ALIBRATE : {
+        CDN : "https://cdn.alibrate.com/",
         USER : {
             //WS - REST AUTH
             AUTH : "https://api.alibrate.com/v1/auth/local",

@@ -7,14 +7,17 @@
         </div>
         <div class="container-fluid">
             <div id="carousel-example" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                <div class="carousel-inner mx-auto" role="listbox">
 
-                    <div v-for="ranking in aRanking" class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3" v-bind:key="ranking._id" >
+                    <div v-for="ranking in aRanking" 
+                        style="height:220"
+                        class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3" 
+                        v-bind:key="ranking._id" 
+                    >
                         <div class="card" style="width: 18rem;">
                             <img :src="cdn + ranking.imageThumb" class="card-img-top" :alt="ranking.name">                            
-                            <div class="card-body">
-                                {{ranking.imageThumb.includes('.png', '.jpg')}}
-                                <h5 class="card-title">{{ranking.name}}</h5>
+                            <div class="card-body" style="padding:inherit">
+                                <h5 class="card-title" style="font-size: 12px;margin-top: 10px;">{{ranking.name}}</h5>
                             </div>
                         </div>
                     </div>
@@ -40,7 +43,7 @@
     
 import axios from 'axios'
 import {constants} from '../../../constants'
-import store from '../../store'
+//import store from '../../store'
 
 export default {
     mounted() {
@@ -49,8 +52,8 @@ export default {
     
     data() {
         return {
-            cdn : "https://cdn.alibrate.com/",
-            aRanking : []
+            aRanking : [],
+            cdn : constants.ALIBRATE.CDN
         }
     
     },
@@ -61,13 +64,12 @@ export default {
                 headers: {
                     'accept': 'application/json',
                     'content-type': 'application/x-www-form-urlencoded',
-                    common : {'Authorization': "Bearer " + store.state.token}
+                    common : {'Authorization': "Bearer " + this.$store.state.token}
                 }
             };
 
-
             axios.get(
-                constants.ALIBREATE.RANKINGS.BOOKS_GENRES.url + "?page=1&limit=100", 
+                constants.ALIBRATE.RANKINGS.BOOKS_GENRES.url + "?page=1&limit=100", 
                 options
             ).then((rs) => {
                 this.aRanking = rs.data.docs.filter(ranking => ranking.imageThumb.includes('.png', '.jpg'))
@@ -76,11 +78,14 @@ export default {
                 jQuery('#carousel').carousel();
                 jQuery('.carousel-indicators > li').first().addClass('active');
                 jQuery('.carousel-item').first().addClass('active');
+                
+                
 
+                
                 jQuery('#carousel-example').on('slide.bs.carousel', function (e) {
                     let $e = jQuery(e.relatedTarget);
                     let idx = $e.index();
-                    let itemsPerSlide = 5;
+                    let itemsPerSlide = parseInt(window.innerWidth / 190);
                     let totalItems = jQuery('.carousel-item').length;
                 
                     if (idx >= totalItems-(itemsPerSlide-1)) {
@@ -116,40 +121,44 @@ export default {
         width : 28rem !important;
     }
 
-}
 
+}
 
 /*
     code by Iatek LLC 2018 - CC 2.0 License - Attribution required
     code customized by Azmind.com
 */
 @media (min-width: 768px) and (max-width: 991px) {
-    /* Show 4th slide on md if col-md-4*/
+    
     .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
         position: absolute;
         top: 0;
-        right: -33.3333%;  /*change this with javascript in the future*/
+        right: -33.3333%;  
         z-index: -1;
         display: block;
         visibility: visible;
     }
 }
+
+/*este es el que muestra dos*/
 @media (min-width: 576px) and (max-width: 768px) {
-    /* Show 3rd slide on sm if col-sm-6*/
+  
     .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
         position: absolute;
         top: 0;
-        right: -50%;  /*change this with javascript in the future*/
+        right: -50%;  
         z-index: -1;
         display: block;
         visibility: visible;
     }
 }
+
 @media (min-width: 576px) {
+    
     .carousel-item {
         margin-right: 0;
     }
-    /* show 2 items */
+
     .carousel-inner .active + .carousel-item {
         display: block;
     }
@@ -161,7 +170,6 @@ export default {
         position: relative;
         transform: translate3d(0, 0, 0);
     }
-    /* left or forward direction */
     .active.carousel-item-left + .carousel-item-next.carousel-item-left,
     .carousel-item-next.carousel-item-left + .carousel-item,
     .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
@@ -169,7 +177,7 @@ export default {
         transform: translate3d(-100%, 0, 0);
         visibility: visible;
     }
-    /* farthest right hidden item must be also positioned for animations */
+
     .carousel-inner .carousel-item-prev.carousel-item-right {
         position: absolute;
         top: 0;
@@ -178,7 +186,7 @@ export default {
         display: block;
         visibility: visible;
     }
-    /* right or prev direction */
+    
     .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
     .carousel-item-prev.carousel-item-right + .carousel-item,
     .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
@@ -189,6 +197,7 @@ export default {
         visibility: visible;
     }
 }
+
 /* MD */
 @media (min-width: 768px) {
     /* show 3rd of 3 item slide */
@@ -249,6 +258,33 @@ export default {
         display: block;
         visibility: visible;
     }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 50px;
+  width: 50px;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  background-color : white;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 33px;
+  font-weight: bold;
+  color: black;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 33px;
+  font-weight: bold;
+  color: black;
+}
+
+
 }
 
 </style>

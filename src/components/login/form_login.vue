@@ -86,7 +86,7 @@ export default {
                 };
                 
                 axios.post(
-                    constants.ALIBREATE.USER.AUTH, 
+                    constants.ALIBRATE.USER.AUTH, 
                     qs.stringify({username : this.frmLogin.username, password : this.frmLogin.password}),
                     options
                 ).then((rs) => {
