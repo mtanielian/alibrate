@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <div v-for="(person, index) in aPeople" class="row" style="background:white;margin-bottom:10px;height:90px" :key="person._id">
             <div class="col-6">
                 <img 
@@ -27,8 +27,11 @@
                 </label>
             </div>
             <div class="col-6" style="text-align:right">
-                <button type="button" style="margin-top:15px" class="btn btn-primary">Seguir</button>
+                <button type="button" style="margin-top:15px;font-size:12px;font-weight:bold" class="btn btn-primary">Seguir</button>
             </div>
+        </div>
+        <div style="margin:20px;color: #02a7e1; cursor:pointer">
+            Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
         </div>
     </div>    
 </template>
@@ -57,6 +60,15 @@ export default {
         }
     },
     methods : {
+        getParamsToWs() {
+            let auxParams = this.ws.params;
+            let aParams = []
+            Object.keys(auxParams).forEach((p) => {
+                aParams.push(`${p}=${auxParams[p]}`)
+            })
+
+            return "?" + aParams.join("&");
+        },
         getData() {
              let options = {
                 headers: {
@@ -67,7 +79,7 @@ export default {
             };
 
             axios.get(
-                this.ws.url + "?page=1&limit=3&byScore=true", 
+                this.ws.url + this.getParamsToWs(),
                 options
             ).then((rs) => {
                this.aPeople = rs.data

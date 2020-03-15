@@ -13,8 +13,8 @@ export const constants = Object.freeze({
                 url : "https://api.alibrate.com/v1/books/genres",
                 method : "GET",
                 params : {
-                    page : "",
-                    limit : ""
+                    page : "1",
+                    limit : "100"
                 }
             },
             //Positions 
@@ -22,7 +22,7 @@ export const constants = Object.freeze({
                 url : "https://api.alibrate.com/v1/rankings/positions",
                 method : "GET",
                 params : {
-                    byScore : ""
+                    byScore : "true"
                 }
             },
             // Los que más reseñan
@@ -30,8 +30,8 @@ export const constants = Object.freeze({
                 url : "https://api.alibrate.com/v1/rankings/topReviewers",
                 method : "GET",
                 params : {
-                    page : "",
-                    limit : ""
+                    page : "1",
+                    limit : "3"
                 }
             },
             // Mejores reseñadores
@@ -39,9 +39,9 @@ export const constants = Object.freeze({
                 url : "https://api.alibrate.com/v1/rankings/topMoreLikesInReviews",
                 method : "GET",
                 params : {
-                    byScore : "",
-                    limit : "",
-                    page : ""
+                    byScore : "true",
+                    limit : "3",
+                    page : "1"
                 }
             },
             // Libros más leídos
@@ -49,8 +49,8 @@ export const constants = Object.freeze({
                 url : "https://api.alibrate.com/v1/rankings/topBookReadedInLibraries",
                 method : "GET",
                 params : {
-                    limit : "",
-                    page : ""
+                    limit : "3",
+                    page : "1"
                 }
             },
             //Lectores con más seguidores
@@ -58,8 +58,8 @@ export const constants = Object.freeze({
                 url : "https://api.alibrate.com/v1/rankings/topMoreFollowed",
                 method : "GET",
                 params : {
-                    limit : "",
-                    page : ""
+                    limit : "3",
+                    page : "1"
                 }
             },
             //Lectores con mejores citas
@@ -67,9 +67,9 @@ export const constants = Object.freeze({
                 url : "https://api.alibrate.com/v1/rankings/topMoreLikesInQuotes",
                 method : "GET",
                 params : {
-                    byScore : "",
-                    limit : "",
-                    page : ""
+                    byScore : "true",
+                    limit : "3",
+                    page : "1"
                 }
             },
             // Lectores con mejores listas
@@ -77,9 +77,9 @@ export const constants = Object.freeze({
                 url : "https://api.alibrate.com/v1/rankings/topMoreLikesInLists",
                 method : "GET",
                 params : {
-                    byScore : "",
-                    limit : "",
-                    page : ""
+                    byScore : "true",
+                    limit : "3",
+                    page : "1"
                 }
             },
             //Lectores con mejores imágenes
@@ -87,9 +87,9 @@ export const constants = Object.freeze({
                 url : "https://api.alibrate.com/v1/rankings/topMoreLikesInImages",
                 method : "GET",
                 params : {
-                    byScore : "",
-                    limit : "",
-                    page : ""
+                    byScore : "true",
+                    limit : "3",
+                    page : "1"
                 }
             },
             //Lectores con mejores textos
@@ -97,9 +97,9 @@ export const constants = Object.freeze({
                 url : "https://api.alibrate.com/v1/rankings/topMoreLikesInTexts",
                 method : "GET",
                 params : {
-                    byScore : "",
-                    limit : "",
-                    page : ""
+                    byScore : "true",
+                    limit : "3",
+                    page : "1"
                 }
             },           
         }

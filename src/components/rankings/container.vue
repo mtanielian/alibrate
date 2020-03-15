@@ -12,7 +12,7 @@
         </div>
         <positions id="positionsWeb"></positions>
         <carouselGenre ></carouselGenre>
-        <div class="container" style="margin-top:20px">
+        <div style="margin-top:20px">
             <div class="row">
                 <div class="col-12">
                     <h2 class="text-uppercase" style="font-weight:bold">Ranking general</h2>
@@ -21,14 +21,45 @@
                     <label style="font-size:18px;font-weight:bold">Mejores reseñadores </label>
                     <contentGeneric :ws="this.ws_top_more_likes_in_reviews"></contentGeneric>
                 </div>
-                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12" 
-                style="font-size:18px;font-weight:bold">
+                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <label style="font-size:18px;font-weight:bold">Libros más leídos </label>
                     <contentBooks :ws="this.ws_top_books_readed_in_libraries"></contentBooks>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:18px;font-weight:bold">Los que más reseñan </label>
+                    <contentGeneric :ws="this.ws_top_reviewers"></contentGeneric>
+                </div>
+                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:18px;font-weight:bold">Lectores con más seguidores </label>
+                    <contentGeneric :ws="this.ws_top_more_followed"></contentGeneric>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:18px;font-weight:bold">Lectores con mejores textos </label>
+                    <contentGeneric :ws="this.ws_top_more_likes_in_texts"></contentGeneric>
+                </div>
+                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:18px;font-weight:bold">Lectores con mejores listas </label>
+                    <contentGeneric :ws="this.ws_top_more_likes_in_lists"></contentGeneric>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:18px;font-weight:bold">Lectores con mejores citas </label>
+                    <contentGeneric :ws="this.ws_top_more_likes_in_quotes"></contentGeneric>
+                </div>
+                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:18px;font-weight:bold">Lectores con mejores imágenes </label>
+                    <contentGeneric :ws="this.ws_top_more_likes_in_images"></contentGeneric>
+                </div>
+            </div>
+           
         </div>
     </div>
+    
 </template>
 
 
@@ -50,9 +81,23 @@ export default {
     data() {
         return {
             user : this.$store.state.data_user,
+            // Mejores reseñadores
             ws_top_more_likes_in_reviews : constants.ALIBRATE.RANKINGS.TOP_MORE_LIKES_IN_REVIEWS,
-            ws_top_books_readed_in_libraries : constants.ALIBRATE.RANKINGS.TOP_BOOK_READED_IN_LIBRARIES
-            
+            // Libros más leídos
+            ws_top_books_readed_in_libraries : constants.ALIBRATE.RANKINGS.TOP_BOOK_READED_IN_LIBRARIES,
+             // Los que más reseñan
+            ws_top_reviewers : constants.ALIBRATE.RANKINGS.TOP_REVIEWERS,
+               //Lectores con más seguidores
+            ws_top_more_followed : constants.ALIBRATE.RANKINGS.TOP_MORE_FOLLOWED,
+            //Lectores con mejores citas
+            ws_top_more_likes_in_quotes : constants.ALIBRATE.RANKINGS.TOP_MORE_LIKES_IN_QUOTES,
+            // Lectores con mejores listas
+            ws_top_more_likes_in_lists : constants.ALIBRATE.RANKINGS.TOP_MORE_LIKES_IN_LISTS,
+            //Lectores con mejores imágenes
+            ws_top_more_likes_in_images : constants.ALIBRATE.RANKINGS.TOP_MORE_LIKES_IN_IMAGES,
+            //Lectores con mejores textos
+            ws_top_more_likes_in_texts : constants.ALIBRATE.RANKINGS.TOP_MORE_LIKES_IN_TEXTS,
+
         }
     }
 
