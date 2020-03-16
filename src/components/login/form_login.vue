@@ -159,7 +159,7 @@ export default {
                     options
                 ).then((rs) => {
                     this.$store.dispatch('setToken', rs.data.access_token).then(() => {
-                       this.$router.push('home') 
+                       this.$router.push('rankings') 
                     })
                 }).catch((e) => {
                     switch (e.response.data.code) {
