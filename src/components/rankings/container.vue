@@ -22,9 +22,8 @@
                         <label style="font-size:18px;font-weight:bold">Mejores reseñadores </label>
                         <contentGeneric :ws="this.ws_top_more_likes_in_reviews"></contentGeneric>
                         <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModal(ws_top_more_likes_in_reviews)'>
-                            Ver Todes <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
+                            Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
                         </div>
-
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label style="font-size:18px;font-weight:bold">Libros más leídos </label>
@@ -35,30 +34,48 @@
                     <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label style="font-size:18px;font-weight:bold">Los que más reseñan </label>
                         <contentGeneric :ws="this.ws_top_reviewers"></contentGeneric>
+                        <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModal(ws_top_reviewers)'>
+                            Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
+                        </div>
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label style="font-size:18px;font-weight:bold">Lectores con más seguidores </label>
                         <contentGeneric :ws="this.ws_top_more_followed"></contentGeneric>
+                        <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModal(ws_top_more_followed)'>
+                            Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label style="font-size:18px;font-weight:bold">Lectores con mejores textos </label>
                         <contentGeneric :ws="this.ws_top_more_likes_in_texts"></contentGeneric>
+                        <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModal(ws_top_more_likes_in_texts)'>
+                            Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
+                        </div>
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label style="font-size:18px;font-weight:bold">Lectores con mejores listas </label>
                         <contentGeneric :ws="this.ws_top_more_likes_in_lists"></contentGeneric>
+                        <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModal(ws_top_more_likes_in_lists)'>
+                            Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label style="font-size:18px;font-weight:bold">Lectores con mejores citas </label>
                         <contentGeneric :ws="this.ws_top_more_likes_in_quotes"></contentGeneric>
+                        <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModal(ws_top_more_likes_in_quotes)'>
+                            Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
+                        </div>
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label style="font-size:18px;font-weight:bold">Lectores con mejores imágenes </label>
                         <contentGeneric :ws="this.ws_top_more_likes_in_images"></contentGeneric>
+                        <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModal(ws_top_more_likes_in_images)'>
+                            Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
+                        </div>
                     </div>
                 </div>
             
@@ -107,15 +124,13 @@ export default {
     },
     methods : {
         openModal(params) {
+            jQuery(jQuery(".modal-body")[0]).html('')
             this.$root.$emit('loadDataModal', params)
+            
+                    
            
         }
-
-
-
     }
-
-
 }
 </script>
 
