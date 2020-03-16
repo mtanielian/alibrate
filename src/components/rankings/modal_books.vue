@@ -135,8 +135,8 @@ export default {
                         this.aPeople = []
                         this.page = 0
                         this.getDataFinish = false
-                        jQuery(jQuery(".modal-body")[1]).html('')
-                        jQuery(jQuery(".modal-body")[1]).scrollTop(0)
+                        jQuery("." + this.ws.classModal).find(".modal-body").html('')
+                        jQuery("." + this.ws.classModal).find(".modal-body").scrollTop(0)
                     })             
                 }
             }).then(() => {
