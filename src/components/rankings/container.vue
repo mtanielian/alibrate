@@ -1,80 +1,86 @@
 <template>
-    <div style="background: #f5f5f5">
-        <div id="header-ranking"
-            style="background: #666 url('https://cdn.alibrate.com/images/bg-rankings.jpg') center; height: 160px;" 
-            class="header-int hidden-xs"
-        >
-            <div class="container text-left ptl" style="margin-left:10px">
-                <h1 class="h2 light-grey text-uppercase mtl" style="color: white;font-weight: bold;padding-top: 50px;">
-                    Rankings
-                </h1>
+    <div>
+        <div style="background: #f5f5f5">
+            <div id="header-ranking"
+                style="background: #666 url('https://cdn.alibrate.com/images/bg-rankings.jpg') center; height: 160px;" 
+                class="header-int hidden-xs"
+            >
+                <div class="container text-left ptl" style="margin-left:10px">
+                    <h1 class="h2 light-grey text-uppercase mtl" style="color: white;font-weight: bold;padding-top: 50px;">
+                        Rankings
+                    </h1>
+                </div>
+            </div>
+            <positions id="positionsWeb"></positions>
+            <carouselGenre ></carouselGenre>
+            <div style="margin-top:20px">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-uppercase" style="font-weight:bold">Ranking general</h2>
+                    </div>
+                    <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label style="font-size:18px;font-weight:bold">Mejores reseñadores </label>
+                        <contentGeneric :ws="this.ws_top_more_likes_in_reviews"></contentGeneric>
+                        <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModal(ws_top_more_likes_in_reviews)'>
+                            Ver Todes <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
+                        </div>
+
+                    </div>
+                    <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label style="font-size:18px;font-weight:bold">Libros más leídos </label>
+                        <contentBooks :ws="this.ws_top_books_readed_in_libraries"></contentBooks>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label style="font-size:18px;font-weight:bold">Los que más reseñan </label>
+                        <contentGeneric :ws="this.ws_top_reviewers"></contentGeneric>
+                    </div>
+                    <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label style="font-size:18px;font-weight:bold">Lectores con más seguidores </label>
+                        <contentGeneric :ws="this.ws_top_more_followed"></contentGeneric>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label style="font-size:18px;font-weight:bold">Lectores con mejores textos </label>
+                        <contentGeneric :ws="this.ws_top_more_likes_in_texts"></contentGeneric>
+                    </div>
+                    <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label style="font-size:18px;font-weight:bold">Lectores con mejores listas </label>
+                        <contentGeneric :ws="this.ws_top_more_likes_in_lists"></contentGeneric>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label style="font-size:18px;font-weight:bold">Lectores con mejores citas </label>
+                        <contentGeneric :ws="this.ws_top_more_likes_in_quotes"></contentGeneric>
+                    </div>
+                    <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label style="font-size:18px;font-weight:bold">Lectores con mejores imágenes </label>
+                        <contentGeneric :ws="this.ws_top_more_likes_in_images"></contentGeneric>
+                    </div>
+                </div>
+            
             </div>
         </div>
-        <positions id="positionsWeb"></positions>
-        <carouselGenre ></carouselGenre>
-        <div style="margin-top:20px">
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="text-uppercase" style="font-weight:bold">Ranking general</h2>
-                </div>
-                <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label style="font-size:18px;font-weight:bold">Mejores reseñadores </label>
-                    <contentGeneric :ws="this.ws_top_more_likes_in_reviews"></contentGeneric>
-                </div>
-                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label style="font-size:18px;font-weight:bold">Libros más leídos </label>
-                    <contentBooks :ws="this.ws_top_books_readed_in_libraries"></contentBooks>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label style="font-size:18px;font-weight:bold">Los que más reseñan </label>
-                    <contentGeneric :ws="this.ws_top_reviewers"></contentGeneric>
-                </div>
-                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label style="font-size:18px;font-weight:bold">Lectores con más seguidores </label>
-                    <contentGeneric :ws="this.ws_top_more_followed"></contentGeneric>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label style="font-size:18px;font-weight:bold">Lectores con mejores textos </label>
-                    <contentGeneric :ws="this.ws_top_more_likes_in_texts"></contentGeneric>
-                </div>
-                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label style="font-size:18px;font-weight:bold">Lectores con mejores listas </label>
-                    <contentGeneric :ws="this.ws_top_more_likes_in_lists"></contentGeneric>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-5 offset-md-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label style="font-size:18px;font-weight:bold">Lectores con mejores citas </label>
-                    <contentGeneric :ws="this.ws_top_more_likes_in_quotes"></contentGeneric>
-                </div>
-                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label style="font-size:18px;font-weight:bold">Lectores con mejores imágenes </label>
-                    <contentGeneric :ws="this.ws_top_more_likes_in_images"></contentGeneric>
-                </div>
-            </div>
-           
-        </div>
+        <modal></modal>
     </div>
-    
 </template>
 
 
 
 <script>
+import { constants } from '../../../constants'
 import carouselGenre from './carousel_ranking_genre'
 import positions from './positions'
 import contentGeneric from './content_generic'
 import contentBooks from './content_books'
-
-import { constants } from '../../../constants'
+import modal from './modal_generic'
 
 
 export default {
-    components : {carouselGenre, positions, contentGeneric, contentBooks},
+    components : {carouselGenre, positions, contentGeneric, contentBooks, modal},
     mounted() {
         
     },
@@ -97,8 +103,16 @@ export default {
             ws_top_more_likes_in_images : constants.ALIBRATE.RANKINGS.TOP_MORE_LIKES_IN_IMAGES,
             //Lectores con mejores textos
             ws_top_more_likes_in_texts : constants.ALIBRATE.RANKINGS.TOP_MORE_LIKES_IN_TEXTS,
-
         }
+    },
+    methods : {
+        openModal(params) {
+            this.$root.$emit('loadDataModal', params)
+           
+        }
+
+
+
     }
 
 

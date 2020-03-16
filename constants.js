@@ -27,6 +27,7 @@ export const constants = Object.freeze({
             },
             // Los que más reseñan
             TOP_REVIEWERS : { 
+                classModal : "topReviewers",
                 url : "https://api.alibrate.com/v1/rankings/topReviewers",
                 method : "GET",
                 params : {
@@ -36,6 +37,7 @@ export const constants = Object.freeze({
             },
             // Mejores reseñadores
             TOP_MORE_LIKES_IN_REVIEWS : { 
+                classModal : "topMoreLikesInReviews",
                 url : "https://api.alibrate.com/v1/rankings/topMoreLikesInReviews",
                 method : "GET",
                 params : {
@@ -46,6 +48,7 @@ export const constants = Object.freeze({
             },
             // Libros más leídos
             TOP_BOOK_READED_IN_LIBRARIES : { 
+                classModal : "topBookReadedInLibraries",
                 url : "https://api.alibrate.com/v1/rankings/topBookReadedInLibraries",
                 method : "GET",
                 params : {
@@ -55,6 +58,7 @@ export const constants = Object.freeze({
             },
             //Lectores con más seguidores
             TOP_MORE_FOLLOWED : { 
+                classModal : "topMoreFollowed",
                 url : "https://api.alibrate.com/v1/rankings/topMoreFollowed",
                 method : "GET",
                 params : {
@@ -64,6 +68,7 @@ export const constants = Object.freeze({
             },
             //Lectores con mejores citas
             TOP_MORE_LIKES_IN_QUOTES : { 
+                classModal : "topMoreLikesInQuotes",
                 url : "https://api.alibrate.com/v1/rankings/topMoreLikesInQuotes",
                 method : "GET",
                 params : {
@@ -74,6 +79,7 @@ export const constants = Object.freeze({
             },
             // Lectores con mejores listas
             TOP_MORE_LIKES_IN_LISTS : { 
+                classModal : "topMoreLikesInLists",
                 url : "https://api.alibrate.com/v1/rankings/topMoreLikesInLists",
                 method : "GET",
                 params : {
@@ -84,6 +90,7 @@ export const constants = Object.freeze({
             },
             //Lectores con mejores imágenes
             TOP_MORE_LIKES_IN_IMAGES : { 
+                classModal : "topMoreLikesInImages",
                 url : "https://api.alibrate.com/v1/rankings/topMoreLikesInImages",
                 method : "GET",
                 params : {
@@ -94,6 +101,7 @@ export const constants = Object.freeze({
             },
             //Lectores con mejores textos
             TOP_MORE_LIKES_IN_TEXTS : { 
+                classModal : "topMoreLikesInTexts",
                 url : "https://api.alibrate.com/v1/rankings/topMoreLikesInTexts",
                 method : "GET",
                 params : {
