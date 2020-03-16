@@ -48,9 +48,6 @@
 
             </div>
         </div>
-        <div style="margin:20px;color: #02a7e1; cursor:pointer">
-            Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
-        </div>
     </div>    
 </template>
 

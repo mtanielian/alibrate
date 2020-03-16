@@ -28,6 +28,9 @@
                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label style="font-size:18px;font-weight:bold">Libros más leídos </label>
                         <contentBooks :ws="this.ws_top_books_readed_in_libraries"></contentBooks>
+                        <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModalBooks(ws_top_books_readed_in_libraries)'>
+                            Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -78,10 +81,10 @@
                         </div>
                     </div>
                 </div>
-            
             </div>
         </div>
         <modal></modal>
+        <modalBooks></modalBooks>
     </div>
 </template>
 
@@ -94,10 +97,12 @@ import positions from './positions'
 import contentGeneric from './content_generic'
 import contentBooks from './content_books'
 import modal from './modal_generic'
+import modalBooks from './modal_books'
+
 
 
 export default {
-    components : {carouselGenre, positions, contentGeneric, contentBooks, modal},
+    components : {carouselGenre, positions, contentGeneric, contentBooks, modal, modalBooks},
     mounted() {
         
     },
@@ -125,6 +130,10 @@ export default {
     methods : {
         openModal(params) {
             this.$root.$emit('loadDataModal', params)
+        },
+
+        openModalBooks(params) {
+            this.$root.$emit('loadDataModalBooks', params)
         }
     }
 }
