@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label style="font-size:18px;font-weight:bold">Lectores con más seguidores </label>
-                        <contentGeneric :ws="this.ws_top_more_followed"></contentGeneric>
+                        <contentGeneric class="container" :ws="this.ws_top_more_followed"></contentGeneric>
                         <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModal(ws_top_more_followed)'>
                             Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
                         </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label style="font-size:18px;font-weight:bold">Lectores con mejores listas </label>
-                        <contentGeneric :ws="this.ws_top_more_likes_in_lists"></contentGeneric>
+                        <contentGeneric class="container" :ws="this.ws_top_more_likes_in_lists"></contentGeneric>
                         <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModal(ws_top_more_likes_in_lists)'>
                             Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
                         </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label style="font-size:18px;font-weight:bold">Lectores con mejores imágenes </label>
-                        <contentGeneric :ws="this.ws_top_more_likes_in_images"></contentGeneric>
+                        <contentGeneric class="container" :ws="this.ws_top_more_likes_in_images"></contentGeneric>
                         <div style="margin:20px;color: #02a7e1; cursor:pointer" v-on:click='openModal(ws_top_more_likes_in_images)'>
                             Ver Todos <i class="fas fa-sort-down" style="margin-bottom:3px; margin-left: 5px;"></i>
                         </div>
@@ -124,11 +124,7 @@ export default {
     },
     methods : {
         openModal(params) {
-            jQuery(jQuery(".modal-body")[0]).html('')
             this.$root.$emit('loadDataModal', params)
-            
-                    
-           
         }
     }
 }

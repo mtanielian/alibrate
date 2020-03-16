@@ -9,8 +9,8 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" style="max-height:500px;overflow-y:auto" v-on:scroll.passive='handleScroll'>
-                    <div v-for="(person, index) in aPeople" class="row" style="background:white;margin-bottom:10px;height:90px;border: 1px solid hsla(0,0%,80%,.5);" :key="person._id">
+                <div class="modal-body container" style="max-height:500px;overflow-y:auto;" v-on:scroll.passive='handleScroll'>
+                    <div v-for="(person, index) in aPeople" class="row" style="background:white;margin-bottom:10px;height:90px;border: 1px solid hsla(0,0%,80%,.5);margin-right:0px;margin-left: 0px" :key="person._id">
                         <div class="col-6">
                             <img 
                                 v-if="medals[index]" 
