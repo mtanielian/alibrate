@@ -14,7 +14,11 @@
                             <i class="fas fa-align-justify" style="font-size: 1.4rem;"></i>
                         </button>
                         <img class="logoAlibrate" :src="alibrateIcon" alt="Logo Alibrate" style="width:7em;">
-                        
+       
+                        <input type="search" id="search" placeholder="Buscar lectores y libros (título o autor)"  
+                            style="width:30em;margin-left:15px"
+                            class="form-control b-grey"
+                        >
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item" style="margin-right:15px">
@@ -160,16 +164,6 @@ export default {
             })
 
         },
-        postulations() {
-            this.$router.push("/postulations")
-        },
-        cv() {
-            this.$router.push("/cv")
-        },
-        profile() {
-            this.$router.push("/profile")
-        }
-
     },
     data() {
         return {
@@ -205,6 +199,10 @@ export default {
     #sidebarCollapse {
         display: inline;
         
+    }
+
+    #search {
+        width: 25em !important;
     }
 }
 

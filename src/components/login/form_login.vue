@@ -1,8 +1,6 @@
 <template>
-    <div>
-        
-        <div class="login-wrap" :style="{ backgroundImage: `linear-gradient(#5b5b92, transparent) ,url(${backgroundLogin})` }">
-           
+    <div>        
+        <div class="login-wrap" :style="{ backgroundImage: `linear-gradient(#5b5b92, transparent) ,url(${backgroundLogin})` }">           
             <div class="login-html">
                  <div class="group" style="margin:25px">
                     <a href="#">
@@ -27,13 +25,26 @@
                         <div class="group">
                             <label for="user" class="label">Email (o usuario si ya eres miembro)</label>
                             <input id="user" v-model="frmLogin.username" type="text" class="input color-black" placeholder="Ej flor@mail.com">
+                             <div class="form-group" v-if="frmLogin.error_username" style="margin-bottom:0px !important;text-align:left">
+                                <small class="text-danger" style="font-weight:bold">
+                                    Email o Usuario Inválido.
+                                </small>      
+                            </div>
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Contraseña</label>
-                            <input id="pass" v-model="frmLogin.password" type="password" class="input color-black" data-type="password" placeholder="Ingresa tu contraseña">
+                            <input id="pass" v-model="frmLogin.password" type="password" class="input color-black" 
+                                data-type="password" placeholder="Ingresa tu contraseña"
+                                v-on:keyup.enter="login"
+                            >
+                             <div class="form-group" v-if="frmLogin.error_password" style="margin-bottom:0px !important;text-align:left">
+                                <small class="text-danger" style="font-weight:bold">
+                                    Constraseña Incorrecta.
+                                </small>      
+                            </div>
                         </div>
                         <div class="group" style="margin-top:40px">
-                            <label class="label forgot-password">¿Olvidaste tu contraseña?</label>
+                            <label class="label forgot-password" style="cursor:pointer" v-on:click="recoverPass">¿Olvidaste tu contraseña?</label>
                         </div>
                         <div class="group" style="margin-top:25px">
                             <input type="submit" class="button" value="Ingresar" v-on:click="login">
@@ -45,7 +56,50 @@
                     
                 </div>
             </div>
+        
+
+        <div class="modal fade" id="recoverPass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div v-if="!sendPass" class="modal-body container" style="text-align:left">
+                        <p class="text-uppercase" style="color:#1c4865; font-weight:bold">Recuperar Contraseña</p>
+                        <div style="height:50px;font-size:14px;color:black">
+                            Ingresa tu usuario o e-mail de ALIBRATE. A continuación recibirás un enlace en tu e-mail para cambiar tu contraseña.
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label 
+                                class="dark-grey text-uppercase"
+                                style="margin-bottom: 0px; font-weight: bold; font-size: 14px;"
+                            >
+                                Ingresa tu Usuario o e-mail
+                            </label>
+                            <input 
+                                type="text" placeholder="Ej. flor@mail.com o FlorT" v-model="frmRecover.username" 
+                                class="form-control"
+                                v-on:keyup.enter="sendRecoverPass"
+                            >
+                            <button 
+                                type="button" 
+                                class="btn btn-primary btn-block mtl text-uppercase hidden-xs"
+                                style="margin-top: 25px; color: white; font-size: 15px; font-weight: bold; background-color: #1c4865"
+                                v-on:click="sendRecoverPass"
+                            >
+                                Recuperar Contraseña
+                            </button>
+                        </div>
+                    </div>
+                    <div v-if="sendPass" class="text-center ptxl pbxl pll prl">
+                        <i class="fas fa-lock fa-5x" style="margin-top:15px"></i>
+                        <h3 class="violet mbl">¡Enviado correctamente!</h3>
+                        <p class="grey">Llegará a su correo un e-mail para resetear su contraseña.</p>
+                        <p class="grey">El equipo de<span class="violet">&nbsp;ALIBRATE.</span></p>
+                    </div>
+                </div>
+            </div>
         </div>
+        </div>
+        
     </div>
 </template>
 
@@ -61,21 +115,35 @@ import {constants} from '../../../constants'
 export default {
     data() {
         return {
+            sendPass : false,
             backgroundLogin,
             faceIcon,
             alibrateIcon,
             frmLogin : {
                 username : '',
-                password : ''
+                password : '',
+                error_username : false,
+                error_password : false,
+            },
+            frmRecover : {
+                username : ''
             }
         }
     },
     mounted () {
         if (this.$store.state.token)
-            this.$router.push('home')         
+            this.$router.push('home')     
+            
+        jQuery("#recoverPass").on('hide.bs.modal', () => { 
+            if(this.sendPass)
+                window.location.reload();
+        })
+
     },
     methods : {
         login() {
+            this.frmLogin.error_username = false
+            this.frmLogin.error_password  = false
             if (this.frmLogin.username && this.frmLogin.password) {
 
                 let options = {
@@ -90,22 +158,54 @@ export default {
                     qs.stringify({username : this.frmLogin.username, password : this.frmLogin.password}),
                     options
                 ).then((rs) => {
-                   
                     this.$store.dispatch('setToken', rs.data.access_token).then(() => {
                        this.$router.push('home') 
                     })
                 }).catch((e) => {
-                    console.log(e.response.data.message)
+                    switch (e.response.data.code) {
+                        case "500003":
+                            this.frmLogin.error_password = true;
+                            break;
+                        case "400001":
+                            this.frmLogin.error_username = true;
+                            break;
+                    }
+        
+                    
                     
                 })
 
             }
                 
+        },
+        recoverPass() {
+            jQuery("#recoverPass").modal("show")
+        },
+        sendRecoverPass() {
+            if (this.frmRecover.username) {
+                let options = {
+                    headers: {
+                        'accept': 'application/json',
+                        'content-type': 'application/x-www-form-urlencoded',
+                        common : {'Authorization': "Bearer " + constants.ALIBRATE.USER.REST_PASSWORD_TOKEN}
+                    }
+                };
+                
+                axios.post(
+                    constants.ALIBRATE.USER.REST_PASSWORD, 
+                    qs.stringify({emailOrUsername : this.frmRecover.username}),
+                    options
+                ).then((rs) => {
+                    console.log(rs);
+                    this.sendPass = true;
+                   
+                }).catch((e) => {
+                    this.sendPass = false;
+                    console.log(e.response.data.message)
+                })
+
+            }
         }
-
-
-
-
     }
 }
 </script>

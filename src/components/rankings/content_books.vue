@@ -68,13 +68,13 @@ export default {
             aBooks : [],
             lblBookStatus : {
                  wantToRead : "Por Leer" ,
-                 reading : "Leyenedo" ,
+                 reading : "Leyendo" ,
                  readed : "Leido" ,
                  abandoned : "Abandonado" , 
             },
             aBookStatus : [
                 { wantToRead : "Por Leer" },
-                { reading : "Leyenedo" },
+                { reading : "Leyendo" },
                 { readed : "Leido" },
                 { abandoned : "Abandonado" },
             ]
