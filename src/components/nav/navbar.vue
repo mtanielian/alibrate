@@ -1,12 +1,8 @@
 <template>
     <div>
         <div class="wrapper">
-            <!-- Sidebar  -->
-         
-
             <!-- Page Content  -->
             <div id="content">
-
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
 
@@ -134,6 +130,7 @@ import moment from 'moment'
 
 export default {
     mounted() {
+        /* Funciones para iniciar el sidebar */
        jQuery("#sidebar").mCustomScrollbar({
             theme: "minimal"
         });
@@ -154,11 +151,13 @@ export default {
             
     },
     methods : {
+        // Calculo la edad del usuario mostrado en el sidebar
         getAge() {
             return moment().diff(moment(this.user.userInfo.profile.birthday, 'YYYYMMDD'), 'years') + " años "
 
         },
         logout() {
+            // Ejecuto el logout del user en el store de vuex limpio token y user info => mando a login
              this.$store.dispatch('logoutUser').then(() => {
                 this.$router.push('/') 
             })
@@ -168,7 +167,6 @@ export default {
     data() {
         return {
             alibrateIcon,
-            showLogin : false,
             user : this.$store.state.data_user,
             frmLogin : {
                 email : '',
